@@ -16,272 +16,371 @@
     }
 
     :root {
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --primary: #2563eb;
-      --primary-light: #eff6ff;
-      --green: #16a34a;
-      --green-light: #f0fdf4;
-      --yellow: #d97706;
-      --yellow-light: #fffbeb;
-      --red: #dc2626;
-      --red-light: #fef2f2;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --panel2: #f8fafc;
+      --border: #e5eaf1;
+
       --text: #172033;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
+      --muted: #718096;
+
+      --blue: #3b82f6;
+      --cyan: #06b6d4;
+      --green: #22a95a;
+      --yellow: #e5a318;
+      --red: #e84b5f;
+      --purple: #8b5cf6;
+
+      --shadow: 0 5px 20px rgba(15, 23, 42, 0.055);
     }
 
     body {
-      font-family: "Segoe UI", "Noto Sans Thai", Tahoma, sans-serif;
+      font-family:
+        Inter,
+        "Noto Sans Thai",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
+
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
     }
 
     .container {
-      width: min(1200px, calc(100% - 32px));
+      width: min(1450px, calc(100% - 40px));
       margin: auto;
+      padding-bottom: 50px;
     }
 
     /* HEADER */
 
     header {
-      background: #ffffff;
       border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
     }
 
     .header-inner {
-      width: min(1200px, calc(100% - 32px));
+      width: min(1450px, calc(100% - 40px));
       margin: auto;
-      min-height: 82px;
+      min-height: 88px;
 
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 20px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 13px;
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
 
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
-      background: var(--primary-light);
-      font-size: 25px;
+      font-size: 27px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #dbeafe,
+          #cffafe
+        );
+
+      box-shadow:
+        0 8px 20px rgba(59, 130, 246, 0.12);
     }
 
     .brand h1 {
       font-size: 21px;
-      font-weight: 750;
+      letter-spacing: 0.3px;
+      color: #172033;
     }
 
     .brand p {
-      margin-top: 3px;
       color: var(--muted);
       font-size: 12px;
+      margin-top: 4px;
     }
 
-    .status-group {
+    .header-status {
       display: flex;
-      align-items: center;
-      gap: 9px;
+      gap: 10px;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .status-pill {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
 
-      padding: 8px 12px;
+      padding: 9px 13px;
 
       border: 1px solid var(--border);
       border-radius: 999px;
 
-      font-size: 11px;
       color: var(--muted);
+      font-size: 12px;
 
-      background: #fff;
+      background: #ffffff;
     }
 
     .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #94a3b8;
+      background: #a7b2c0;
     }
 
     .dot.green {
       background: var(--green);
+      box-shadow: 0 0 0 4px rgba(34, 169, 90, 0.10);
     }
 
     .dot.red {
       background: var(--red);
+      box-shadow: 0 0 0 4px rgba(232, 75, 95, 0.10);
     }
 
-    /* INTRO */
+    /* HERO */
 
-    .intro {
-      padding: 34px 0 20px;
+    .hero {
+      padding: 38px 0 24px;
+
+      display: grid;
+      grid-template-columns: 1.6fr .7fr;
+      gap: 22px;
     }
 
-    .intro-card {
-      background: linear-gradient(
-        135deg,
-        #ffffff,
-        #f1f7ff
-      );
-
-      border: 1px solid #dce8f8;
-      border-radius: 20px;
-      padding: 27px 30px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-
+    .hero-main,
+    .score-panel {
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: #ffffff;
       box-shadow: var(--shadow);
     }
 
-    .intro-text small {
-      color: var(--primary);
+    .hero-main {
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f4f9ff 100%
+        );
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      right: -80px;
+      top: -100px;
+
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.07);
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      letter-spacing: 2px;
       font-weight: 700;
-      letter-spacing: 1px;
     }
 
-    .intro-text h2 {
-      margin-top: 7px;
-      font-size: 27px;
+    .hero h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      margin-top: 12px;
+      line-height: 1.15;
+      color: #172033;
     }
 
-    .intro-text p {
-      margin-top: 8px;
-      max-width: 650px;
-
+    .hero-desc {
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
+      max-width: 700px;
+      margin-top: 14px;
+      line-height: 1.8;
+    }
+
+    .quick-info {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 27px;
+    }
+
+    .quick-item small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .quick-item strong {
+      font-size: 14px;
+      color: #27364a;
     }
 
     /* SCORE */
 
-    .score {
-      min-width: 190px;
-      text-align: center;
+    .score-panel {
+      padding: 25px;
 
-      padding-left: 25px;
-      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .score-label {
       color: var(--muted);
-      font-size: 11px;
+      font-size: 12px;
     }
 
-    .score-number {
-      margin-top: 4px;
-      font-size: 39px;
+    .score-value {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin: 7px 0;
+    }
+
+    .score-value span:first-child {
+      font-size: 58px;
       font-weight: 800;
-      color: var(--primary);
+      color: #172033;
     }
 
-    .score-number small {
-      font-size: 14px;
+    .score-value span:last-child {
       color: var(--muted);
-      font-weight: 500;
     }
 
     .score-status {
-      margin-top: 2px;
-      font-size: 12px;
       font-weight: 700;
       color: var(--green);
     }
 
-    /* SECTION */
-
-    .section {
-      margin-top: 22px;
+    .score-bar {
+      height: 8px;
+      border-radius: 20px;
+      background: #edf1f5;
+      overflow: hidden;
+      margin-top: 16px;
     }
 
-    .section-header {
-      margin-bottom: 12px;
+    .score-fill {
+      height: 100%;
+      width: 0%;
+
+      background:
+        linear-gradient(
+          90deg,
+          #22c55e,
+          #3b82f6
+        );
+
+      border-radius: inherit;
+      transition: width .5s;
+    }
+
+    /* SECTION */
+
+    .section-title {
+      margin: 25px 0 14px;
 
       display: flex;
       justify-content: space-between;
-      align-items: end;
-      gap: 10px;
+      align-items: center;
     }
 
-    .section-header h3 {
+    .section-title h3 {
       font-size: 17px;
+      color: #172033;
     }
 
-    .section-header p {
+    .section-title span {
       color: var(--muted);
-      font-size: 11px;
+      font-size: 12px;
     }
 
-    /* SENSOR */
+    /* SENSOR CARDS */
 
     .sensor-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 13px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
     }
 
-    .sensor-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+    .sensor {
+      background: #ffffff;
 
-      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+
+      padding: 19px;
 
       box-shadow: var(--shadow);
+
+      transition:
+        transform .2s,
+        border-color .2s,
+        box-shadow .2s;
     }
 
-    .sensor-head {
+    .sensor:hover {
+      transform: translateY(-3px);
+      border-color: rgba(59, 130, 246, .30);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    }
+
+    .sensor-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .sensor-icon {
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
+
+      border-radius: 12px;
 
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
-      border-radius: 11px;
-      background: var(--primary-light);
+      background: #f2f7ff;
 
-      font-size: 20px;
+      font-size: 22px;
     }
 
     .sensor-name {
       color: var(--muted);
       font-size: 12px;
-      margin-top: 14px;
+      margin-top: 18px;
     }
 
     .sensor-value {
-      margin-top: 3px;
-      font-size: 28px;
-      font-weight: 750;
+      margin-top: 5px;
+      font-size: 27px;
+      font-weight: 800;
+      color: #172033;
     }
 
     .sensor-value small {
@@ -291,9 +390,9 @@
     }
 
     .badge {
-      display: inline-block;
+      display: inline-flex;
 
-      margin-top: 9px;
+      margin-top: 12px;
       padding: 5px 8px;
 
       border-radius: 7px;
@@ -303,65 +402,99 @@
     }
 
     .good {
-      color: var(--green);
-      background: var(--green-light);
+      color: #15803d;
+      background: #ecfdf3;
     }
 
     .warning {
-      color: var(--yellow);
-      background: var(--yellow-light);
+      color: #b77900;
+      background: #fff8e6;
     }
 
     .danger {
-      color: var(--red);
-      background: var(--red-light);
+      color: #d6354d;
+      background: #fff0f2;
     }
 
-    /* ANALYSIS */
+    /* CONTENT */
 
-    .analysis-card {
-      background: var(--card);
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.45fr .75fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      background: #ffffff;
+
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 21px;
+
+      padding: 22px;
 
       box-shadow: var(--shadow);
     }
 
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .panel-title h3 {
+      font-size: 16px;
+      color: #172033;
+    }
+
+    .panel-title p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ANALYSIS */
+
     .analysis-list {
-      display: grid;
-      gap: 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .analysis-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      border: 1px solid #e8edf3;
+      border-radius: 13px;
 
       padding: 13px 14px;
 
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+
       background: #f8fafc;
-      border: 1px solid #edf1f5;
-      border-radius: 11px;
     }
 
     .analysis-icon {
       width: 31px;
       height: 31px;
+
       flex: 0 0 31px;
 
       border-radius: 9px;
 
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
       background: #ffffff;
-      border: 1px solid var(--border);
+      border: 1px solid #e5eaf1;
     }
 
     .analysis-item strong {
       font-size: 12px;
+      color: #27364a;
     }
 
     .analysis-item p {
@@ -371,65 +504,161 @@
       margin-top: 3px;
     }
 
-    /* CHART */
+    /* ENERGY */
 
-    .chart-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-
-      padding: 20px;
-
-      box-shadow: var(--shadow);
+    .energy-big {
+      font-size: 42px;
+      font-weight: 800;
+      color: #172033;
     }
 
-    .chart-buttons {
+    .energy-big small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .energy-desc {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .energy-meter {
+      height: 9px;
+      background: #edf1f5;
+      border-radius: 20px;
+      margin: 18px 0 10px;
+      overflow: hidden;
+    }
+
+    .energy-meter-fill {
+      height: 100%;
+      width: 0%;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          #06b6d4,
+          #8b5cf6
+        );
+
+      transition: width .4s;
+    }
+
+    /* CHART */
+
+    .chart-controls {
       display: flex;
-      gap: 7px;
       flex-wrap: wrap;
-      margin-bottom: 17px;
+
+      gap: 7px;
+      margin-bottom: 16px;
     }
 
     .chart-btn {
-      padding: 7px 11px;
-
       border: 1px solid var(--border);
-      border-radius: 8px;
 
       background: #ffffff;
       color: var(--muted);
 
-      font-size: 11px;
-      cursor: pointer;
+      padding: 7px 10px;
 
-      transition: 0.15s;
+      border-radius: 8px;
+
+      font-size: 10px;
+
+      cursor: pointer;
+      transition: .15s;
     }
 
     .chart-btn:hover {
-      border-color: #93b4ec;
+      border-color: #9ebce8;
+      color: var(--blue);
     }
 
     .chart-btn.active {
       color: #ffffff;
-      border-color: var(--primary);
-      background: var(--primary);
+      background: var(--blue);
+      border-color: var(--blue);
     }
 
-    .chart-container {
+    .chart-box {
       height: 300px;
     }
 
-    /* SYSTEM */
+    /* BUILDING OVERVIEW */
 
-    .system-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-
-      padding: 20px;
-
-      box-shadow: var(--shadow);
+    .building-map {
+      display: grid;
+      gap: 10px;
     }
+
+    .floor {
+      padding: 14px;
+
+      border: 1px solid #e7ecf2;
+      border-radius: 12px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background: #f8fafc;
+    }
+
+    .floor strong {
+      color: #27364a;
+    }
+
+    .floor small {
+      color: var(--muted);
+    }
+
+    .floor-state {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* HISTORY */
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .history-row {
+      display: grid;
+
+      grid-template-columns:
+        115px 1fr auto;
+
+      gap: 15px;
+
+      padding: 12px 0;
+
+      border-bottom:
+        1px solid #edf0f4;
+
+      font-size: 11px;
+    }
+
+    .history-row:last-child {
+      border-bottom: none;
+    }
+
+    .history-time {
+      color: var(--muted);
+    }
+
+    .history-values {
+      color: #334155;
+    }
+
+    /* SYSTEM */
 
     .system-grid {
       display: grid;
@@ -439,54 +668,37 @@
 
     .system-item {
       background: #f8fafc;
-      border-radius: 10px;
-      padding: 13px;
+
+      border: 1px solid #e8edf3;
+      border-radius: 13px;
+
+      padding: 14px;
     }
 
     .system-item small {
-      display: block;
       color: var(--muted);
-      font-size: 10px;
-      margin-bottom: 4px;
+      display: block;
+      margin-bottom: 6px;
     }
 
     .system-item strong {
-      font-size: 11px;
+      font-size: 12px;
+      color: #27364a;
       word-break: break-word;
     }
 
     footer {
-      padding: 30px 0 35px;
       text-align: center;
       color: #94a3b8;
-      font-size: 10px;
+      font-size: 11px;
+      padding: 35px 0 0;
     }
 
     /* RESPONSIVE */
 
-    @media (max-width: 800px) {
-
-      .header-inner {
-        padding: 15px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .intro-card {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .score {
-        width: 100%;
-        border-left: 0;
-        border-top: 1px solid var(--border);
-        padding: 18px 0 0;
-        text-align: left;
-      }
-
+    @media(max-width: 1150px) {
       .sensor-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
 
       .system-grid {
@@ -494,23 +706,40 @@
       }
     }
 
-    @media (max-width: 500px) {
+    @media(max-width: 800px) {
+      .hero,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
 
+      .header-inner {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .header-status {
+        justify-content: flex-start;
+      }
+    }
+
+    @media(max-width: 600px) {
       .container,
       .header-inner {
-        width: calc(100% - 20px);
+        width: min(100% - 22px, 1450px);
       }
 
       .sensor-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .system-grid {
         grid-template-columns: 1fr;
       }
 
-      .intro-card {
-        padding: 20px;
+      .history-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
       }
     }
   </style>
@@ -519,24 +748,18 @@
 <body>
 
 <header>
-
   <div class="header-inner">
 
     <div class="brand">
-
-      <div class="logo">
-        🏢
-      </div>
+      <div class="logo">🏢</div>
 
       <div>
         <h1>Smart Building 102</h1>
-        <p>ระบบติดตามสภาพแวดล้อมภายในอาคาร</p>
+        <p>Intelligent Building Monitoring & Energy Management</p>
       </div>
-
     </div>
 
-
-    <div class="status-group">
+    <div class="header-status">
 
       <div class="status-pill">
         <span id="firebaseDot" class="dot"></span>
@@ -546,60 +769,92 @@
       </div>
 
       <div class="status-pill">
-        <span id="espDot" class="dot"></span>
-        <span id="espText">
+        <span id="deviceDot" class="dot"></span>
+        <span id="deviceText">
           ESP32 กำลังตรวจสอบ...
+        </span>
+      </div>
+
+      <div class="status-pill">
+        <span id="streamDot" class="dot"></span>
+        <span id="streamText">
+          Data Stream กำลังตรวจสอบ...
         </span>
       </div>
 
     </div>
 
   </div>
-
 </header>
 
 
 <main class="container">
 
-  <!-- INTRO -->
+  <!-- HERO -->
 
-  <section class="intro">
+  <section class="hero">
 
-    <div class="intro-card">
+    <div class="hero-main">
 
-      <div class="intro-text">
+      <div class="eyebrow">
+        BUILDING CONTROL CENTER
+      </div>
 
-        <small>SMART BUILDING MONITORING</small>
+      <h2>
+        ระบบบริหารจัดการ<br>
+        อาคารอัจฉริยะ
+      </h2>
 
-        <h2>
-          ระบบติดตามอาคารอัจฉริยะ
-        </h2>
+      <p class="hero-desc">
+        ตรวจสอบสภาพแวดล้อม จำนวนผู้ใช้อาคาร
+        และการใช้พลังงานแบบเรียลไทม์
+        พร้อมวิเคราะห์ความผิดปกติและให้คำแนะนำอัตโนมัติ
+      </p>
 
-        <p>
-          แสดงและวิเคราะห์ข้อมูลสภาพแวดล้อมภายในอาคาร
-          จาก ESP32 ผ่าน Firebase Realtime Database
-          เพื่อช่วยตรวจสอบความเหมาะสมของพื้นที่
-          และการใช้พลังงานแบบเรียลไทม์
-        </p>
+      <div class="quick-info">
+
+        <div class="quick-item">
+          <small>DEVICE</small>
+          <strong>ESP32-01</strong>
+        </div>
+
+        <div class="quick-item">
+          <small>DATABASE</small>
+          <strong>iot-102</strong>
+        </div>
+
+        <div class="quick-item">
+          <small>UPDATE RATE</small>
+          <strong>10 Seconds</strong>
+        </div>
+
+        <div class="quick-item">
+          <small>LAST UPDATE</small>
+          <strong id="lastUpdate">--</strong>
+        </div>
 
       </div>
 
+    </div>
 
-      <div class="score">
 
-        <div class="score-label">
-          คะแนนสภาพอาคาร
-        </div>
+    <div class="score-panel">
 
-        <div class="score-number">
-          <span id="score">--</span>
-          <small>/100</small>
-        </div>
+      <div class="score-label">
+        BUILDING HEALTH SCORE
+      </div>
 
-        <div id="scoreStatus" class="score-status">
-          กำลังประเมิน...
-        </div>
+      <div class="score-value">
+        <span id="score">--</span>
+        <span>/ 100</span>
+      </div>
 
+      <div id="scoreStatus" class="score-status">
+        กำลังประเมิน...
+      </div>
+
+      <div class="score-bar">
+        <div id="scoreFill" class="score-fill"></div>
       </div>
 
     </div>
@@ -607,188 +862,169 @@
   </section>
 
 
-  <!-- SENSORS -->
+  <!-- SENSOR TITLE -->
 
-  <section class="section">
+  <div class="section-title">
+    <h3>Live Building Sensors</h3>
+    <span>ข้อมูลจาก ESP32 แบบเรียลไทม์</span>
+  </div>
 
-    <div class="section-header">
 
-      <div>
-        <h3>ข้อมูลภายในอาคาร</h3>
-        <p>ข้อมูลจาก ESP32 แบบเรียลไทม์</p>
+  <!-- SENSOR CARDS -->
+
+  <section class="sensor-grid">
+
+    <div class="sensor">
+
+      <div class="sensor-top">
+        <span class="sensor-icon">🌡️</span>
       </div>
+
+      <div class="sensor-name">
+        อุณหภูมิ
+      </div>
+
+      <div class="sensor-value">
+        <span id="temp">--</span>
+        <small>°C</small>
+      </div>
+
+      <span id="tempBadge" class="badge">
+        --
+      </span>
 
     </div>
 
 
-    <div class="sensor-grid">
+    <div class="sensor">
 
-
-      <!-- TEMP -->
-
-      <div class="sensor-card">
-
-        <div class="sensor-head">
-          <div class="sensor-icon">🌡️</div>
-        </div>
-
-        <div class="sensor-name">
-          อุณหภูมิ
-        </div>
-
-        <div class="sensor-value">
-          <span id="temp">--</span>
-          <small>°C</small>
-        </div>
-
-        <span id="tempBadge" class="badge">
-          --
-        </span>
-
+      <div class="sensor-top">
+        <span class="sensor-icon">💧</span>
       </div>
 
-
-      <!-- HUMIDITY -->
-
-      <div class="sensor-card">
-
-        <div class="sensor-head">
-          <div class="sensor-icon">💧</div>
-        </div>
-
-        <div class="sensor-name">
-          ความชื้น
-        </div>
-
-        <div class="sensor-value">
-          <span id="humi">--</span>
-          <small>%</small>
-        </div>
-
-        <span id="humiBadge" class="badge">
-          --
-        </span>
-
+      <div class="sensor-name">
+        ความชื้น
       </div>
 
-
-      <!-- LIGHT -->
-
-      <div class="sensor-card">
-
-        <div class="sensor-head">
-          <div class="sensor-icon">💡</div>
-        </div>
-
-        <div class="sensor-name">
-          ความสว่าง
-        </div>
-
-        <div class="sensor-value">
-          <span id="light">--</span>
-          <small>lux</small>
-        </div>
-
-        <span id="lightBadge" class="badge">
-          --
-        </span>
-
+      <div class="sensor-value">
+        <span id="humi">--</span>
+        <small>%</small>
       </div>
 
+      <span id="humiBadge" class="badge">
+        --
+      </span>
 
-      <!-- CO2 -->
+    </div>
 
-      <div class="sensor-card">
 
-        <div class="sensor-head">
-          <div class="sensor-icon">🌬️</div>
-        </div>
+    <div class="sensor">
 
-        <div class="sensor-name">
-          CO₂
-        </div>
-
-        <div class="sensor-value">
-          <span id="co2">--</span>
-          <small>ppm</small>
-        </div>
-
-        <span id="co2Badge" class="badge">
-          --
-        </span>
-
+      <div class="sensor-top">
+        <span class="sensor-icon">💡</span>
       </div>
 
-
-      <!-- PEOPLE -->
-
-      <div class="sensor-card">
-
-        <div class="sensor-head">
-          <div class="sensor-icon">👥</div>
-        </div>
-
-        <div class="sensor-name">
-          จำนวนคน
-        </div>
-
-        <div class="sensor-value">
-          <span id="people">--</span>
-          <small>คน</small>
-        </div>
-
-        <span id="peopleBadge" class="badge">
-          --
-        </span>
-
+      <div class="sensor-name">
+        ความสว่าง
       </div>
 
-
-      <!-- ENERGY -->
-
-      <div class="sensor-card">
-
-        <div class="sensor-head">
-          <div class="sensor-icon">⚡</div>
-        </div>
-
-        <div class="sensor-name">
-          การใช้พลังงาน
-        </div>
-
-        <div class="sensor-value">
-          <span id="energy">--</span>
-          <small>kW</small>
-        </div>
-
-        <span id="energyBadge" class="badge">
-          --
-        </span>
-
+      <div class="sensor-value">
+        <span id="light">--</span>
+        <small>lux</small>
       </div>
+
+      <span id="lightBadge" class="badge">
+        --
+      </span>
+
+    </div>
+
+
+    <div class="sensor">
+
+      <div class="sensor-top">
+        <span class="sensor-icon">🌬️</span>
+      </div>
+
+      <div class="sensor-name">
+        CO₂
+      </div>
+
+      <div class="sensor-value">
+        <span id="co2">--</span>
+        <small>ppm</small>
+      </div>
+
+      <span id="co2Badge" class="badge">
+        --
+      </span>
+
+    </div>
+
+
+    <div class="sensor">
+
+      <div class="sensor-top">
+        <span class="sensor-icon">👥</span>
+      </div>
+
+      <div class="sensor-name">
+        จำนวนคน
+      </div>
+
+      <div class="sensor-value">
+        <span id="people">--</span>
+        <small>คน</small>
+      </div>
+
+      <span id="peopleBadge" class="badge">
+        --
+      </span>
+
+    </div>
+
+
+    <div class="sensor">
+
+      <div class="sensor-top">
+        <span class="sensor-icon">⚡</span>
+      </div>
+
+      <div class="sensor-name">
+        การใช้พลังงาน
+      </div>
+
+      <div class="sensor-value">
+        <span id="energy">--</span>
+        <small>kW</small>
+      </div>
+
+      <span id="energyBadge" class="badge">
+        --
+      </span>
 
     </div>
 
   </section>
 
 
-  <!-- ANALYSIS -->
+  <!-- ANALYSIS + ENERGY -->
 
-  <section class="section">
+  <section class="content-grid">
 
-    <div class="section-header">
+    <div class="panel">
 
-      <div>
-        <h3>💡 การวิเคราะห์อาคาร</h3>
-        <p>
-          ระบบตรวจสอบค่าที่ควรปรับปรุงโดยอัตโนมัติ
-        </p>
+      <div class="panel-title">
+
+        <div>
+          <h3>🧠 Smart Building Analysis</h3>
+          <p>
+            วิเคราะห์ข้อมูลและตรวจหาสภาวะที่ควรปรับปรุง
+          </p>
+        </div>
+
       </div>
 
-    </div>
-
-
-    <div class="analysis-card">
 
       <div id="analysisList" class="analysis-list">
 
@@ -799,13 +1035,8 @@
           </div>
 
           <div>
-            <strong>
-              กำลังวิเคราะห์ข้อมูล
-            </strong>
-
-            <p>
-              กรุณารอสักครู่
-            </p>
+            <strong>กำลังโหลดข้อมูล</strong>
+            <p>ระบบกำลังวิเคราะห์สถานะอาคาร</p>
           </div>
 
         </div>
@@ -814,96 +1045,226 @@
 
     </div>
 
-  </section>
 
+    <div class="panel">
 
-  <!-- CHART -->
+      <div class="panel-title">
 
-  <section class="section">
+        <div>
+          <h3>⚡ Energy Intelligence</h3>
+          <p>วิเคราะห์การใช้พลังงานของอาคาร</p>
+        </div>
 
-    <div class="section-header">
-
-      <div>
-        <h3>📈 กราฟข้อมูลย้อนหลัง</h3>
-        <p>
-          เลือกประเภทข้อมูลที่ต้องการดู
-        </p>
       </div>
+
+
+      <div class="energy-big">
+        <span id="energyBig">--</span>
+        <small>kW</small>
+      </div>
+
+
+      <div class="energy-meter">
+        <div
+          id="energyFill"
+          class="energy-meter-fill">
+        </div>
+      </div>
+
+
+      <p
+        id="energyDescription"
+        class="energy-desc">
+
+        กำลังประเมินการใช้พลังงาน...
+
+      </p>
 
     </div>
 
+  </section>
 
-    <div class="chart-card">
 
-      <div class="chart-buttons">
+  <!-- CHART + BUILDING -->
+
+  <section class="content-grid">
+
+    <div class="panel">
+
+      <div class="panel-title">
+
+        <div>
+          <h3>📈 Sensor History</h3>
+          <p>
+            ข้อมูลย้อนหลังจาก Firebase Realtime Database
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="chart-controls">
 
         <button
           class="chart-btn active"
           data-field="temperature"
           data-label="อุณหภูมิ">
-
-          อุณหภูมิ
-
+          Temperature
         </button>
-
 
         <button
           class="chart-btn"
           data-field="humidity"
           data-label="ความชื้น">
-
-          ความชื้น
-
+          Humidity
         </button>
-
 
         <button
           class="chart-btn"
           data-field="co2"
           data-label="CO₂">
-
           CO₂
-
         </button>
-
 
         <button
           class="chart-btn"
           data-field="light"
           data-label="ความสว่าง">
-
-          ความสว่าง
-
+          Light
         </button>
-
 
         <button
           class="chart-btn"
           data-field="people"
           data-label="จำนวนคน">
-
-          จำนวนคน
-
+          People
         </button>
-
 
         <button
           class="chart-btn"
           data-field="energy"
           data-label="พลังงาน">
-
-          พลังงาน
-
+          Energy
         </button>
 
       </div>
 
 
-      <div class="chart-container">
-
+      <div class="chart-box">
         <canvas id="historyChart"></canvas>
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-title">
+
+        <div>
+          <h3>🏢 Building Overview</h3>
+          <p>ภาพรวมระบบภายในอาคาร</p>
+        </div>
 
       </div>
+
+
+      <div class="building-map">
+
+        <div class="floor">
+
+          <div>
+            <strong>Environmental System</strong>
+            <br>
+            <small>Temperature & Humidity</small>
+          </div>
+
+          <span
+            id="envState"
+            class="floor-state">
+            Checking
+          </span>
+
+        </div>
+
+
+        <div class="floor">
+
+          <div>
+            <strong>Air System</strong>
+            <br>
+            <small>CO₂ & Ventilation</small>
+          </div>
+
+          <span
+            id="airState"
+            class="floor-state">
+            Checking
+          </span>
+
+        </div>
+
+
+        <div class="floor">
+
+          <div>
+            <strong>Lighting System</strong>
+            <br>
+            <small>Indoor Lighting</small>
+          </div>
+
+          <span
+            id="lightState"
+            class="floor-state">
+            Checking
+          </span>
+
+        </div>
+
+
+        <div class="floor">
+
+          <div>
+            <strong>Energy System</strong>
+            <br>
+            <small>Building Power Load</small>
+          </div>
+
+          <span
+            id="powerState"
+            class="floor-state">
+            Checking
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HISTORY -->
+
+  <div class="section-title">
+
+    <h3>Recent Building Activity</h3>
+
+    <span id="recordCount">
+      0 records
+    </span>
+
+  </div>
+
+
+  <section class="panel">
+
+    <div
+      id="historyList"
+      class="history-list">
+
+      กำลังโหลดข้อมูล...
 
     </div>
 
@@ -912,72 +1273,59 @@
 
   <!-- SYSTEM -->
 
-  <section class="section">
+  <div class="section-title">
 
-    <div class="section-header">
+    <h3>System Information</h3>
 
-      <div>
-        <h3>ข้อมูลระบบ</h3>
+    <span>
+      IoT Architecture
+    </span>
+
+  </div>
+
+
+  <section class="panel">
+
+    <div class="system-grid">
+
+      <div class="system-item">
+        <small>Firebase Database</small>
+        <strong>iot-102</strong>
       </div>
 
-    </div>
+      <div class="system-item">
+        <small>IoT Device</small>
+        <strong>ESP32 DevKit V1</strong>
+      </div>
 
+      <div class="system-item">
+        <small>IoT Platform</small>
+        <strong>ESPHome</strong>
+      </div>
 
-    <div class="system-card">
+      <div class="system-item">
+        <small>Database Type</small>
+        <strong>Firebase RTDB</strong>
+      </div>
 
-      <div class="system-grid">
+      <div class="system-item">
+        <small>Latest Data</small>
+        <strong>building/esp32-01/latest</strong>
+      </div>
 
-        <div class="system-item">
+      <div class="system-item">
+        <small>History Data</small>
+        <strong>building/esp32-01/history</strong>
+      </div>
 
-          <small>
-            Database
-          </small>
+      <div class="system-item">
+        <small>Web Hosting</small>
+        <strong>GitHub Pages</strong>
+      </div>
 
-          <strong>
-            iot-102
-          </strong>
-
-        </div>
-
-
-        <div class="system-item">
-
-          <small>
-            Device
-          </small>
-
-          <strong>
-            ESP32
-          </strong>
-
-        </div>
-
-
-        <div class="system-item">
-
-          <small>
-            IoT Platform
-          </small>
-
-          <strong>
-            ESPHome
-          </strong>
-
-        </div>
-
-
-        <div class="system-item">
-
-          <small>
-            Database Service
-          </small>
-
-          <strong>
-            Firebase RTDB
-          </strong>
-
-        </div>
-
+      <div class="system-item">
+        <small>Dashboard Refresh</small>
+        <strong>Every 5 Seconds</strong>
       </div>
 
     </div>
@@ -986,7 +1334,7 @@
 
 
   <footer>
-    Smart Building 102 • ESP32 • ESPHome • Firebase RTDB
+    Smart Building 102 • ESP32 • ESPHome • Firebase RTDB • GitHub Pages
   </footer>
 
 </main>
@@ -994,22 +1342,20 @@
 
 <script>
 
-  /* =========================
+  /* =========================================
      FIREBASE
-  ========================= */
+  ========================================= */
 
   const DB =
     "https://iot-102-default-rtdb.asia-southeast1.firebasedatabase.app";
 
 
   const LATEST =
-    DB +
-    "/building/esp32-01/latest.json";
+    DB + "/building/esp32-01/latest.json";
 
 
   const HISTORY =
-    DB +
-    "/building/esp32-01/history.json";
+    DB + "/building/esp32-01/history.json";
 
 
   const OFFLINE_SECONDS = 35;
@@ -1029,35 +1375,50 @@
 
 
 
-  /* =========================
+  /* =========================================
      STATUS
-  ========================= */
+  ========================================= */
 
-  function setDot(id, status) {
+  function setDot(
+    id,
+    status
+  ) {
 
     const dot =
       document.getElementById(id);
 
-    dot.className = "dot";
+    dot.className =
+      "dot";
 
 
-    if (status === "green") {
+    if (
+      status === "green"
+    ) {
 
-      dot.classList.add("green");
+      dot.classList.add(
+        "green"
+      );
 
     }
 
 
-    if (status === "red") {
+    if (
+      status === "red"
+    ) {
 
-      dot.classList.add("red");
+      dot.classList.add(
+        "red"
+      );
 
     }
 
   }
 
 
-  function setFirebaseStatus(ok) {
+
+  function setFirebaseStatus(
+    ok
+  ) {
 
     setDot(
       "firebaseDot",
@@ -1069,20 +1430,30 @@
       "firebaseText"
     ).textContent =
       ok
-        ? "Firebase เชื่อมต่อแล้ว"
-        : "Firebase เชื่อมต่อไม่ได้";
+        ? "Firebase Connected"
+        : "Firebase Connection Error";
 
   }
 
 
+
   function checkDeviceStatus() {
 
-    if (!newestTimestamp) {
+    if (
+      !newestTimestamp
+    ) {
 
       document.getElementById(
-        "espText"
+        "deviceText"
       ).textContent =
         "ESP32 กำลังตรวจสอบ...";
+
+
+      document.getElementById(
+        "streamText"
+      ).textContent =
+        "Data Stream กำลังตรวจสอบ...";
+
 
       return;
 
@@ -1105,30 +1476,52 @@
     ) {
 
       setDot(
-        "espDot",
+        "deviceDot",
+        "green"
+      );
+
+      setDot(
+        "streamDot",
         "green"
       );
 
 
       document.getElementById(
-        "espText"
+        "deviceText"
       ).textContent =
-        "ESP32 ออนไลน์ • LIVE";
+        "ESP32 Online";
+
+
+      document.getElementById(
+        "streamText"
+      ).textContent =
+        "Data Stream Live";
 
     }
 
     else {
 
       setDot(
-        "espDot",
+        "deviceDot",
+        "red"
+      );
+
+      setDot(
+        "streamDot",
         "red"
       );
 
 
       document.getElementById(
-        "espText"
+        "deviceText"
       ).textContent =
-        "ESP32 ออฟไลน์";
+        "ESP32 Offline";
+
+
+      document.getElementById(
+        "streamText"
+      ).textContent =
+        "Data Stream Stopped";
 
     }
 
@@ -1136,27 +1529,9 @@
 
 
 
-  /* =========================
+  /* =========================================
      HELPERS
-  ========================= */
-
-  function numberValue(value) {
-
-    const number =
-      Number(value);
-
-    if (
-      Number.isFinite(number)
-    ) {
-
-      return number;
-
-    }
-
-    return 0;
-
-  }
-
+  ========================================= */
 
   function setBadge(
     id,
@@ -1164,89 +1539,156 @@
     type
   ) {
 
-    const badge =
+    const el =
       document.getElementById(id);
 
-    badge.textContent = text;
+    el.textContent =
+      text;
 
-    badge.className =
+    el.className =
       "badge " + type;
 
   }
 
 
 
-  /* =========================
-     SENSOR DISPLAY
-  ========================= */
+  function formatNumber(
+    value,
+    digits = 1
+  ) {
 
-  function updateSensors(data) {
+    const number =
+      Number(value);
+
+
+    if (
+      !Number.isFinite(number)
+    ) {
+
+      return "--";
+
+    }
+
+
+    return number.toFixed(
+      digits
+    );
+
+  }
+
+
+
+  function formatTime(
+    timestamp
+  ) {
+
+    if (
+      !timestamp
+    ) {
+
+      return "--";
+
+    }
+
+
+    return new Date(
+      Number(timestamp) * 1000
+    ).toLocaleString(
+      "th-TH",
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      }
+    );
+
+  }
+
+
+
+  /* =========================================
+     SENSOR UI
+  ========================================= */
+
+  function updateSensors(
+    data
+  ) {
 
     const temp =
-      numberValue(
-        data.temperature
-      );
+      Number(data.temperature);
 
     const humi =
-      numberValue(
-        data.humidity
-      );
+      Number(data.humidity);
 
     const light =
-      numberValue(
-        data.light
-      );
+      Number(data.light);
 
     const co2 =
-      numberValue(
-        data.co2
-      );
+      Number(data.co2);
 
     const people =
-      numberValue(
-        data.people
-      );
+      Number(data.people);
 
     const energy =
-      numberValue(
-        data.energy
-      );
+      Number(data.energy);
 
 
     document.getElementById(
       "temp"
     ).textContent =
-      temp.toFixed(1);
+      formatNumber(
+        temp
+      );
 
 
     document.getElementById(
       "humi"
     ).textContent =
-      humi.toFixed(1);
+      formatNumber(
+        humi
+      );
 
 
     document.getElementById(
       "light"
     ).textContent =
-      Math.round(light);
+      Math.round(
+        light
+      );
 
 
     document.getElementById(
       "co2"
     ).textContent =
-      Math.round(co2);
+      Math.round(
+        co2
+      );
 
 
     document.getElementById(
       "people"
     ).textContent =
-      Math.round(people);
+      Math.round(
+        people
+      );
 
 
     document.getElementById(
       "energy"
     ).textContent =
-      energy.toFixed(2);
+      formatNumber(
+        energy,
+        2
+      );
+
+
+    document.getElementById(
+      "energyBig"
+    ).textContent =
+      formatNumber(
+        energy,
+        2
+      );
 
 
 
@@ -1348,7 +1790,7 @@
 
       setBadge(
         "lightBadge",
-        "แสงมาก",
+        "แสงสูง",
         "warning"
       );
 
@@ -1364,7 +1806,7 @@
 
       setBadge(
         "co2Badge",
-        "ปกติ",
+        "อากาศดี",
         "good"
       );
 
@@ -1386,7 +1828,7 @@
 
       setBadge(
         "co2Badge",
-        "สูง",
+        "CO₂ สูง",
         "danger"
       );
 
@@ -1414,7 +1856,7 @@
 
       setBadge(
         "peopleBadge",
-        "ค่อนข้างหนาแน่น",
+        "หนาแน่น",
         "warning"
       );
 
@@ -1424,7 +1866,7 @@
 
       setBadge(
         "peopleBadge",
-        "หนาแน่น",
+        "หนาแน่นมาก",
         "danger"
       );
 
@@ -1440,7 +1882,7 @@
 
       setBadge(
         "energyBadge",
-        "ปกติ",
+        "ประหยัด",
         "good"
       );
 
@@ -1469,52 +1911,55 @@
     }
 
 
-    updateScore(data);
+    updateScore(
+      data
+    );
 
-    updateAnalysis(data);
+    updateAnalysis(
+      data
+    );
+
+    updateEnergy(
+      data
+    );
+
+    updateBuildingOverview(
+      data
+    );
 
   }
 
 
 
-  /* =========================
+  /* =========================================
      SCORE
-  ========================= */
+  ========================================= */
 
-  function updateScore(data) {
+  function updateScore(
+    data
+  ) {
 
     const temp =
-      numberValue(
-        data.temperature
-      );
+      Number(data.temperature);
 
     const humi =
-      numberValue(
-        data.humidity
-      );
+      Number(data.humidity);
 
     const light =
-      numberValue(
-        data.light
-      );
+      Number(data.light);
 
     const co2 =
-      numberValue(
-        data.co2
-      );
+      Number(data.co2);
 
     const people =
-      numberValue(
-        data.people
-      );
+      Number(data.people);
 
     const energy =
-      numberValue(
-        data.energy
-      );
+      Number(data.energy);
 
 
-    let score = 100;
+    let score =
+      100;
 
 
     if (
@@ -1522,7 +1967,17 @@
       temp > 28
     ) {
 
-      score -= 10;
+      score -= 8;
+
+    }
+
+
+    if (
+      temp < 22 ||
+      temp > 30
+    ) {
+
+      score -= 7;
 
     }
 
@@ -1532,7 +1987,7 @@
       humi > 65
     ) {
 
-      score -= 10;
+      score -= 8;
 
     }
 
@@ -1542,7 +1997,7 @@
       light > 700
     ) {
 
-      score -= 10;
+      score -= 8;
 
     }
 
@@ -1551,7 +2006,7 @@
       co2 >= 1000
     ) {
 
-      score -= 15;
+      score -= 12;
 
     }
 
@@ -1560,7 +2015,7 @@
       co2 >= 1500
     ) {
 
-      score -= 10;
+      score -= 13;
 
     }
 
@@ -1569,7 +2024,16 @@
       people > 30
     ) {
 
-      score -= 10;
+      score -= 8;
+
+    }
+
+
+    if (
+      people > 40
+    ) {
+
+      score -= 7;
 
     }
 
@@ -1578,7 +2042,7 @@
       energy > 5
     ) {
 
-      score -= 10;
+      score -= 8;
 
     }
 
@@ -1608,21 +2072,25 @@
       score;
 
 
-    const status =
-      document.getElementById(
-        "scoreStatus"
-      );
+    document.getElementById(
+      "scoreFill"
+    ).style.width =
+      score + "%";
+
+
+    let status = "";
+    let color = "";
 
 
     if (
       score >= 90
     ) {
 
-      status.textContent =
-        "ดีเยี่ยม";
+      status =
+        "Excellent";
 
-      status.style.color =
-        "#16a34a";
+      color =
+        "#22a95a";
 
     }
 
@@ -1630,11 +2098,11 @@
       score >= 75
     ) {
 
-      status.textContent =
-        "ดี";
+      status =
+        "Good";
 
-      status.style.color =
-        "#16a34a";
+      color =
+        "#22a95a";
 
     }
 
@@ -1642,66 +2110,70 @@
       score >= 60
     ) {
 
-      status.textContent =
-        "ควรตรวจสอบ";
+      status =
+        "Needs Attention";
 
-      status.style.color =
-        "#d97706";
+      color =
+        "#e5a318";
 
     }
 
     else {
 
-      status.textContent =
-        "ควรปรับปรุง";
+      status =
+        "Action Required";
 
-      status.style.color =
-        "#dc2626";
+      color =
+        "#e84b5f";
 
     }
+
+
+    const el =
+      document.getElementById(
+        "scoreStatus"
+      );
+
+
+    el.textContent =
+      status;
+
+    el.style.color =
+      color;
 
   }
 
 
 
-  /* =========================
-     SMART ANALYSIS
-  ========================= */
+  /* =========================================
+     ANALYSIS
+  ========================================= */
 
-  function updateAnalysis(data) {
+  function updateAnalysis(
+    data
+  ) {
 
     const temp =
-      numberValue(
-        data.temperature
-      );
+      Number(data.temperature);
 
     const humi =
-      numberValue(
-        data.humidity
-      );
+      Number(data.humidity);
 
     const light =
-      numberValue(
-        data.light
-      );
+      Number(data.light);
 
     const co2 =
-      numberValue(
-        data.co2
-      );
+      Number(data.co2);
 
     const people =
-      numberValue(
-        data.people
-      );
+      Number(data.people);
 
     const energy =
-      numberValue(
-        data.energy
-      );
+      Number(data.energy);
 
 
-    const items = [];
+    const items =
+      [];
 
 
     if (
@@ -1710,13 +2182,14 @@
 
       items.push({
 
-        icon: "🌡️",
+        icon:
+          "❄️",
 
         title:
           "อุณหภูมิสูงกว่าช่วงที่เหมาะสม",
 
         text:
-          "อุณหภูมิอยู่ที่ " +
+          "อุณหภูมิ " +
           temp.toFixed(1) +
           " °C ควรตรวจสอบระบบปรับอากาศ"
 
@@ -1731,15 +2204,16 @@
 
       items.push({
 
-        icon: "❄️",
+        icon:
+          "🌡️",
 
         title:
           "อุณหภูมิค่อนข้างต่ำ",
 
         text:
-          "อุณหภูมิอยู่ที่ " +
+          "อุณหภูมิ " +
           temp.toFixed(1) +
-          " °C สามารถปรับระบบทำความเย็นให้น้อยลงได้"
+          " °C อาจปรับระบบทำความเย็นลง"
 
       });
 
@@ -1752,36 +2226,16 @@
 
       items.push({
 
-        icon: "💧",
+        icon:
+          "💧",
 
         title:
-          "ความชื้นค่อนข้างสูง",
+          "ความชื้นสูง",
 
         text:
-          "ความชื้นอยู่ที่ " +
+          "ความชื้น " +
           humi.toFixed(1) +
           "% ควรตรวจสอบการถ่ายเทอากาศ"
-
-      });
-
-    }
-
-
-    if (
-      humi < 45
-    ) {
-
-      items.push({
-
-        icon: "💧",
-
-        title:
-          "ความชื้นค่อนข้างต่ำ",
-
-        text:
-          "ความชื้นอยู่ที่ " +
-          humi.toFixed(1) +
-          "%"
 
       });
 
@@ -1794,7 +2248,8 @@
 
       items.push({
 
-        icon: "🌬️",
+        icon:
+          "🌬️",
 
         title:
           "ควรเพิ่มการระบายอากาศ",
@@ -1802,7 +2257,7 @@
         text:
           "CO₂ อยู่ที่ " +
           Math.round(co2) +
-          " ppm ควรเพิ่มการถ่ายเทอากาศภายในอาคาร"
+          " ppm ควรเพิ่มอากาศถ่ายเทภายในอาคาร"
 
       });
 
@@ -1815,15 +2270,16 @@
 
       items.push({
 
-        icon: "👥",
+        icon:
+          "👥",
 
         title:
-          "พื้นที่ค่อนข้างหนาแน่น",
+          "พื้นที่มีความหนาแน่น",
 
         text:
           "ตรวจพบประมาณ " +
           Math.round(people) +
-          " คน ควรติดตาม CO₂ และอุณหภูมิ"
+          " คน ควรติดตาม CO₂ และระบบระบายอากาศ"
 
       });
 
@@ -1836,15 +2292,16 @@
 
       items.push({
 
-        icon: "💡",
+        icon:
+          "💡",
 
         title:
           "แสงสว่างไม่เพียงพอ",
 
         text:
-          "ความสว่างอยู่ที่ " +
+          "ความสว่าง " +
           Math.round(light) +
-          " lux ควรเพิ่มแสงสว่างในพื้นที่"
+          " lux ควรเพิ่มแสงในพื้นที่ใช้งาน"
 
       });
 
@@ -1857,15 +2314,16 @@
 
       items.push({
 
-        icon: "☀️",
+        icon:
+          "☀️",
 
         title:
-          "แสงสว่างมากกว่าที่จำเป็น",
+          "แสงสว่างสูง",
 
         text:
-          "ความสว่างอยู่ที่ " +
+          "ความสว่าง " +
           Math.round(light) +
-          " lux สามารถลดการใช้แสงไฟเพื่อประหยัดพลังงานได้"
+          " lux สามารถลดการใช้แสงประดิษฐ์ได้"
 
       });
 
@@ -1878,15 +2336,16 @@
 
       items.push({
 
-        icon: "⚡",
+        icon:
+          "⚡",
 
         title:
-          "การใช้พลังงานสูง",
+          "ตรวจพบการใช้พลังงานสูง",
 
         text:
-          "กำลังใช้พลังงานประมาณ " +
+          "กำลังใช้ไฟประมาณ " +
           energy.toFixed(2) +
-          " kW ควรตรวจสอบอุปกรณ์ไฟฟ้าที่ไม่จำเป็น"
+          " kW ควรตรวจสอบโหลดที่ไม่จำเป็น"
 
       });
 
@@ -1899,26 +2358,23 @@
 
       items.push({
 
-        icon: "✅",
+        icon:
+          "✓",
 
         title:
-          "สภาพอาคารอยู่ในระดับเหมาะสม",
+          "ระบบอาคารอยู่ในสภาวะเหมาะสม",
 
         text:
-          "อุณหภูมิ ความชื้น แสงสว่าง CO₂ จำนวนคน และการใช้พลังงานอยู่ในช่วงที่เหมาะสม"
+          "ค่าหลักทั้งหมดอยู่ในช่วงที่ระบบกำหนด"
 
       });
 
     }
 
 
-    const container =
-      document.getElementById(
-        "analysisList"
-      );
-
-
-    container.innerHTML =
+    document.getElementById(
+      "analysisList"
+    ).innerHTML =
       items.map(
         item => `
 
@@ -1949,9 +2405,169 @@
 
 
 
-  /* =========================
-     LOAD LATEST
-  ========================= */
+  /* =========================================
+     ENERGY
+  ========================================= */
+
+  function updateEnergy(
+    data
+  ) {
+
+    const energy =
+      Number(data.energy);
+
+
+    const percent =
+      Math.min(
+        100,
+        (energy / 10) * 100
+      );
+
+
+    document.getElementById(
+      "energyFill"
+    ).style.width =
+      percent + "%";
+
+
+    let text = "";
+
+
+    if (
+      energy <= 5
+    ) {
+
+      text =
+        "การใช้พลังงานอยู่ในระดับปกติ ระบบอาคารทำงานอย่างมีประสิทธิภาพ";
+
+    }
+
+    else if (
+      energy <= 7
+    ) {
+
+      text =
+        "การใช้พลังงานอยู่ในระดับปานกลาง ควรติดตามระบบปรับอากาศและแสงสว่าง";
+
+    }
+
+    else {
+
+      text =
+        "การใช้พลังงานสูง ควรตรวจสอบอุปกรณ์ไฟฟ้า ระบบปรับอากาศ และโหลดที่ไม่จำเป็น";
+
+    }
+
+
+    document.getElementById(
+      "energyDescription"
+    ).textContent =
+      text;
+
+  }
+
+
+
+  /* =========================================
+     BUILDING OVERVIEW
+  ========================================= */
+
+  function setSystemState(
+    id,
+    good,
+    textGood,
+    textBad
+  ) {
+
+    const el =
+      document.getElementById(id);
+
+
+    el.textContent =
+      good
+        ? textGood
+        : textBad;
+
+
+    el.style.color =
+      good
+        ? "#22a95a"
+        : "#e5a318";
+
+  }
+
+
+
+  function updateBuildingOverview(
+    data
+  ) {
+
+    const temp =
+      Number(data.temperature);
+
+    const humi =
+      Number(data.humidity);
+
+    const light =
+      Number(data.light);
+
+    const co2 =
+      Number(data.co2);
+
+    const energy =
+      Number(data.energy);
+
+
+    setSystemState(
+      "envState",
+
+      temp >= 24 &&
+      temp <= 28 &&
+      humi >= 45 &&
+      humi <= 65,
+
+      "Normal",
+      "Check"
+    );
+
+
+    setSystemState(
+      "airState",
+
+      co2 < 1000,
+
+      "Normal",
+      "Ventilate"
+    );
+
+
+    setSystemState(
+      "lightState",
+
+      light >= 300 &&
+      light <= 700,
+
+      "Normal",
+      "Adjust"
+    );
+
+
+    setSystemState(
+      "powerState",
+
+      energy <= 5,
+
+      "Efficient",
+      "High Load"
+    );
+
+  }
+
+
+
+  /* =========================================
+     LATEST
+  ========================================= */
 
   async function loadLatest() {
 
@@ -1963,7 +2579,8 @@
           "?t=" +
           Date.now(),
           {
-            cache: "no-store"
+            cache:
+              "no-store"
           }
         );
 
@@ -1984,7 +2601,9 @@
         await response.json();
 
 
-      setFirebaseStatus(true);
+      setFirebaseStatus(
+        true
+      );
 
 
       if (
@@ -2002,30 +2621,59 @@
         );
 
 
-      updateSensors(data);
+      updateSensors(
+        data
+      );
+
+
+      document.getElementById(
+        "lastUpdate"
+      ).textContent =
+        formatTime(
+          newestTimestamp
+        );
+
 
       checkDeviceStatus();
 
     }
 
-    catch (error) {
+    catch (
+      error
+    ) {
 
-      console.error(error);
+      console.error(
+        error
+      );
 
 
-      setFirebaseStatus(false);
+      setFirebaseStatus(
+        false
+      );
 
 
       setDot(
-        "espDot",
+        "deviceDot",
+        "red"
+      );
+
+
+      setDot(
+        "streamDot",
         "red"
       );
 
 
       document.getElementById(
-        "espText"
+        "deviceText"
       ).textContent =
-        "ESP32 ตรวจสอบไม่ได้";
+        "ESP32 ไม่สามารถตรวจสอบได้";
+
+
+      document.getElementById(
+        "streamText"
+      ).textContent =
+        "Data Stream Error";
 
     }
 
@@ -2033,9 +2681,9 @@
 
 
 
-  /* =========================
-     LOAD HISTORY
-  ========================= */
+  /* =========================================
+     HISTORY
+  ========================================= */
 
   async function loadHistory() {
 
@@ -2047,7 +2695,8 @@
           "?t=" +
           Date.now(),
           {
-            cache: "no-store"
+            cache:
+              "no-store"
           }
         );
 
@@ -2057,7 +2706,7 @@
       ) {
 
         throw new Error(
-          "HTTP " +
+          "History HTTP " +
           response.status
         );
 
@@ -2072,9 +2721,13 @@
         !data
       ) {
 
-        historyData = [];
+        historyData =
+          [];
+
 
         updateChart();
+
+        updateHistoryList();
 
         return;
 
@@ -2082,29 +2735,45 @@
 
 
       historyData =
-        Object.values(data)
+        Object.values(
+          data
+        )
 
-          .filter(
-            item =>
-              item &&
-              item.timestamp
-          )
+        .filter(
+          item =>
+            item &&
+            item.timestamp
+        )
 
-          .sort(
-            (a, b) =>
-              Number(a.timestamp) -
-              Number(b.timestamp)
-          );
+        .sort(
+          (a, b) =>
+            Number(
+              a.timestamp
+            ) -
+            Number(
+              b.timestamp
+            )
+        );
+
+
+      document.getElementById(
+        "recordCount"
+      ).textContent =
+        historyData.length +
+        " records";
 
 
       updateChart();
 
+      updateHistoryList();
+
     }
 
-    catch (error) {
+    catch (
+      error
+    ) {
 
       console.error(
-        "History error:",
         error
       );
 
@@ -2114,47 +2783,25 @@
 
 
 
-  /* =========================
+  /* =========================================
      CHART
-  ========================= */
-
-  function formatChartTime(
-    timestamp
-  ) {
-
-    if (
-      !timestamp
-    ) {
-
-      return "";
-
-    }
-
-
-    return new Date(
-      Number(timestamp) * 1000
-    ).toLocaleTimeString(
-      "th-TH",
-      {
-        hour: "2-digit",
-        minute: "2-digit"
-      }
-    );
-
-  }
-
+  ========================================= */
 
   function updateChart() {
 
     const points =
-      historyData.slice(-30);
+      historyData.slice(
+        -30
+      );
 
 
     const labels =
       points.map(
         item =>
-          formatChartTime(
-            item.timestamp
+          formatTime(
+            Number(
+              item.timestamp
+            )
           )
       );
 
@@ -2162,8 +2809,10 @@
     const values =
       points.map(
         item =>
-          numberValue(
-            item[currentField]
+          Number(
+            item[
+              currentField
+            ] || 0
           )
       );
 
@@ -2177,7 +2826,7 @@
     }
 
 
-    const canvas =
+    const ctx =
       document.getElementById(
         "historyChart"
       );
@@ -2185,14 +2834,18 @@
 
     chart =
       new Chart(
-        canvas,
+        ctx,
         {
 
-          type: "line",
+          type:
+            "line",
+
 
           data: {
 
-            labels: labels,
+            labels:
+              labels,
+
 
             datasets: [
 
@@ -2205,13 +2858,16 @@
                   values,
 
                 borderColor:
-                  "#2563eb",
+                  "#3b82f6",
 
                 backgroundColor:
-                  "rgba(37, 99, 235, 0.08)",
+                  "rgba(59,130,246,.08)",
 
-                borderWidth:
-                  2,
+                fill:
+                  true,
+
+                tension:
+                  0.35,
 
                 pointRadius:
                   2,
@@ -2219,11 +2875,8 @@
                 pointHoverRadius:
                   5,
 
-                tension:
-                  0.35,
-
-                fill:
-                  true
+                borderWidth:
+                  2
 
               }
 
@@ -2240,13 +2893,14 @@
             maintainAspectRatio:
               false,
 
+
             interaction: {
 
-              mode:
-                "index",
-
               intersect:
-                false
+                false,
+
+              mode:
+                "index"
 
             },
 
@@ -2258,17 +2912,7 @@
                 labels: {
 
                   color:
-                    "#64748b",
-
-                  boxWidth:
-                    15,
-
-                  font: {
-
-                    size:
-                      11
-
-                  }
+                    "#64748b"
 
                 }
 
@@ -2291,10 +2935,11 @@
 
                 },
 
+
                 grid: {
 
                   color:
-                    "#f1f5f9"
+                    "rgba(148,163,184,.12)"
 
                 }
 
@@ -2310,10 +2955,11 @@
 
                 },
 
+
                 grid: {
 
                   color:
-                    "#eef2f7"
+                    "rgba(148,163,184,.12)"
 
                 }
 
@@ -2330,9 +2976,196 @@
 
 
 
-  /* =========================
+  /* =========================================
+     HISTORY LIST
+  ========================================= */
+
+  function getRecordState(
+    item
+  ) {
+
+    const temp =
+      Number(
+        item.temperature
+      );
+
+
+    const co2 =
+      Number(
+        item.co2
+      );
+
+
+    const energy =
+      Number(
+        item.energy
+      );
+
+
+    const people =
+      Number(
+        item.people
+      );
+
+
+    if (
+      temp > 30 ||
+      co2 >= 1500 ||
+      energy > 8
+    ) {
+
+      return {
+
+        text:
+          "Action Required",
+
+        type:
+          "danger"
+
+      };
+
+    }
+
+
+    if (
+      temp > 28 ||
+      co2 >= 1000 ||
+      energy > 5 ||
+      people > 30
+    ) {
+
+      return {
+
+        text:
+          "Check",
+
+        type:
+          "warning"
+
+      };
+
+    }
+
+
+    return {
+
+      text:
+        "Normal",
+
+      type:
+        "good"
+
+    };
+
+  }
+
+
+
+  function updateHistoryList() {
+
+    const container =
+      document.getElementById(
+        "historyList"
+      );
+
+
+    const latest =
+      historyData
+        .slice(-6)
+        .reverse();
+
+
+    if (
+      latest.length === 0
+    ) {
+
+      container.innerHTML =
+        "<div style='color:#718096'>ยังไม่มีข้อมูลย้อนหลัง</div>";
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      latest.map(
+        item => {
+
+          const state =
+            getRecordState(
+              item
+            );
+
+
+          return `
+
+            <div class="history-row">
+
+              <div class="history-time">
+
+                ${formatTime(
+                  item.timestamp
+                )}
+
+              </div>
+
+
+              <div class="history-values">
+
+                ${Number(
+                  item.temperature
+                ).toFixed(1)}°C
+
+                &nbsp;•&nbsp;
+
+                CO₂
+                ${Math.round(
+                  item.co2
+                )}
+                ppm
+
+                &nbsp;•&nbsp;
+
+                ${Math.round(
+                  item.people
+                )}
+                คน
+
+                &nbsp;•&nbsp;
+
+                ${Number(
+                  item.energy
+                ).toFixed(2)}
+                kW
+
+              </div>
+
+
+              <div>
+
+                <span
+                  class="badge ${state.type}">
+
+                  ${state.text}
+
+                </span>
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      ).join("");
+
+  }
+
+
+
+  /* =========================================
      CHART BUTTONS
-  ========================= */
+  ========================================= */
 
   document.querySelectorAll(
     ".chart-btn"
@@ -2347,10 +3180,13 @@
           document.querySelectorAll(
             ".chart-btn"
           ).forEach(
-            btn =>
+            btn => {
+
               btn.classList.remove(
                 "active"
-              )
+              );
+
+            }
           );
 
 
@@ -2377,9 +3213,9 @@
 
 
 
-  /* =========================
-     REFRESH
-  ========================= */
+  /* =========================================
+     START
+  ========================================= */
 
   async function refreshDashboard() {
 
